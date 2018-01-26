@@ -32,6 +32,7 @@ public class Magpie3
     public String getResponse(String statement)
     {
         String response = "";
+        int noResponseCounter = 0;
         if (statement.length() == 0)
         {
             response = "Say something, please.";
@@ -52,7 +53,44 @@ public class Magpie3
         {
             response = "Tell me more about your cat.";
         }
+         else if (statement.indexOf("dog") >= 0
+                || statement.indexOf("cat") >= 0)
+        {
+                        response = "Tell me more about your pets.";
+        }
         
+        else if (statement.indexOf("Mr. Appel") >= 0)
+        {
+                        response = "He must be a nice teacher.";
+        }
+        
+        else if (statement.indexOf("sad") >= 0)
+        {
+                        response = "Aww, I'm sorry.";
+        }
+        
+        else if (statement.indexOf("happy") >= 0)
+        {
+                        response = "That's good.";
+        }
+        
+        else if (statement.indexOf("awesome") >= 0)
+        {
+                        response = "Wow! Tell me more!";
+        }
+        
+        else if (statement.trim().length() == 0){
+                        if (noResponseCounter == 3)
+                        {
+                            response = "Here to a link to learn how to type: https://www.typing.com/typinglessons";
+                        }
+                        
+                        else
+                        {
+                            response = "Speak up, please.";
+                            noResponseCounter += 1;
+                        }
+        } 
         else
         {
             response = getRandomResponse();
@@ -172,7 +210,17 @@ public class Magpie3
         {
             response = "You don't say.";
         }
-
+        
+        else if (whichResponse == 4)
+        {
+            response = "I can't believe it!";
+        }
+        
+        else if (whichResponse == 5)
+        {
+            response = "Huh? Oh, go on.  I definitely wasn't sleeping...";
+        }
+        
         return response;
     }
     
